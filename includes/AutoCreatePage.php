@@ -3,11 +3,11 @@
 /**
  * This is decreased during page creation to avoid infinite recursive creation of pages.
  */
-$egAutoCreatePageMaxRecursion = 1;
+$wgAutoCreatePageMaxRecursion = 1;
 
-$egAutoCreatePageIgnoreEmptyTitle = false;
+$wgAutoCreatePageIgnoreEmptyTitle = false;
 
-$egAutoCreatePageNamespaces = $wgContentNamespaces;
+$wgAutoCreatePageNamespaces = $wgContentNamespaces;
 
 $GLOBALS['wgExtensionFunctions'][] = function() {
 
@@ -28,9 +28,9 @@ $GLOBALS['wgExtensionFunctions'][] = function() {
  * in the default text parameter to insert verbatim wiki text.
  */
 function createPageIfNotExisting( array $rawParams ) {
-	global $egAutoCreatePageMaxRecursion, $egAutoCreatePageIgnoreEmptyTitle, $egAutoCreatePageNamespaces;
+	global $wgAutoCreatePageMaxRecursion, $wgAutoCreatePageIgnoreEmptyTitle, $wgAutoCreatePageNamespaces;
 
-	if ( $egAutoCreatePageMaxRecursion <= 0 ) {
+	if ( $wgAutoCreatePageMaxRecursion <= 0 ) {
 		return 'Error: Recursion level for auto-created pages exeeded.'; //TODO i18n
 	}
 
@@ -43,7 +43,7 @@ function createPageIfNotExisting( array $rawParams ) {
 	}
 
 	if ( empty( $newPageTitleText ) ) {
-		if ( $egAutoCreatePageIgnoreEmptyTitle === false ) {
+		if ( $wgAutoCreatePageIgnoreEmptyTitle === false ) {
 			return 'Error: this function must be given a valid title text for the page to be created.'; //TODO i18n
 		} else {
 			return '';
@@ -51,7 +51,7 @@ function createPageIfNotExisting( array $rawParams ) {
 	}
 
 	// Create pages only if the page calling the parser function is within defined namespaces
-	if ( !in_array( $parser->getTitle()->getNamespace(), $egAutoCreatePageNamespaces ) ) {
+	if ( !in_array( $parser->getTitle()->getNamespace(), $wgAutoCreatePageNamespaces ) ) {
 		return '';
 	}
 
@@ -75,7 +75,7 @@ function createPageIfNotExisting( array $rawParams ) {
  * Note that article is, in spite of its name, a WikiPage object since MW 1.21.
  */
 function doCreatePages( &$article, &$editInfo, $changed ) {
-	global $egAutoCreatePageMaxRecursion;
+	global $wgAutoCreatePageMaxRecursion;
 
 	$createPageData = $editInfo->output->getExtensionData( 'createPage' );
 	if ( is_null( $createPageData ) ) {
@@ -83,7 +83,7 @@ function doCreatePages( &$article, &$editInfo, $changed ) {
 	}
 
 	// Prevent pages to be created by pages that are created to avoid loops:
-	$egAutoCreatePageMaxRecursion--;
+	$wgAutoCreatePageMaxRecursion--;
 
 	$sourceTitle = $article->getTitle();
 	$sourceTitleText = $sourceTitle->getPrefixedText();
@@ -104,7 +104,7 @@ function doCreatePages( &$article, &$editInfo, $changed ) {
 
 	// Reset state. Probably not needed since parsing is usually done here anyway:
 	$editInfo->output->setExtensionData( 'createPage', null ); 
-	$egAutoCreatePageMaxRecursion++;
+	$wgAutoCreatePageMaxRecursion++;
 
 	return true;
 }
