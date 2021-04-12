@@ -23,7 +23,7 @@
 		]
 	},
 	"AutoloadClasses": {
-		"AutoCreatePage": "includes/AutoCreatePage.php"
+		"AutoCreatePage": "includes/AutoCreatePage.php",
 		"AutoCreatePageHooks": "includes/AutoCreatePageHooks.php"
 	},
 	"Hooks": {
