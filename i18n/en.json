@@ -1,0 +1,8 @@
+{
+	"@metadata": {
+		"authors": [
+			"Universal Omega"
+		]
+	},
+	"autocreatepage-desc": "Provides a parser function to create additional wiki pages with default content when saving a page."
+}
