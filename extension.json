@@ -10,7 +10,7 @@
 	"url": "https://www.mediawiki.org/wiki/Extension:AutoCreatePage",
 	"descriptionmsg": "autocreatepage-desc",
 	"type": "parserhook",
-	"callback": "AutoCreatePageHooks::onRegistration",
+	"callback": "AutoCreatePage::onRegistration",
 	"requires": {
 		"MediaWiki": ">= 1.35.0"
 	},
@@ -23,12 +23,11 @@
 		]
 	},
 	"AutoloadClasses": {
-		"AutoCreatePage": "includes/AutoCreatePage.php",
-		"AutoCreatePageHooks": "includes/AutoCreatePageHooks.php"
+		"AutoCreatePage": "includes/AutoCreatePage.php"
 	},
 	"Hooks": {
-		"ArticleEditUpdates": "AutoCreatePageHooks::onArticleEditUpdates",
-		"ParserFirstCallInit": "AutoCreatePageHooks::onParserFirstCallInit"
+		"ArticleEditUpdates": "AutoCreatePage::doCreatePages",
+		"ParserFirstCallInit": "AutoCreatePage::onParserFirstCallInit"
 	},
 	"manifest_version": 2
 }
