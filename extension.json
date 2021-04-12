@@ -1,1 +1,34 @@
-
+{
+	"name": "AutoCreatePage",
+	"version": "0.7",
+	"author": [
+		"Universal Omega",
+		"Markus Krötzsch",
+		"Daniel Herzig"
+	],
+	"license-name": "GPL-2.0-or-later",
+	"url": "https://www.mediawiki.org/wiki/Extension:AutoCreatePage",
+	"descriptionmsg": "autocreatepage-desc",
+	"type": "parserhook",
+	"callback": "AutoCreatePageHooks::onRegistration",
+	"requires": {
+		"MediaWiki": ">= 1.35.0"
+	},
+	"ExtensionMessagesFiles": {
+		"AutoCreatePageMagic": "AutoCreatePage.i18n.magic.php"
+	},
+	"MessagesDirs": {
+		"AutoCreatePage": [
+			"i18n"
+		]
+	},
+	"AutoloadClasses": {
+		"AutoCreatePage": "includes/AutoCreatePage.php"
+		"AutoCreatePageHooks": "includes/AutoCreatePageHooks.php"
+	},
+	"Hooks": {
+		"ArticleEditUpdates": "AutoCreatePageHooks::onArticleEditUpdates",
+		"ParserFirstCallInit": "AutoCreatePageHooks::onParserFirstCallInit"
+	},
+	"manifest_version": 2
+}
