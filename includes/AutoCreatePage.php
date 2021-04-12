@@ -1,32 +1,6 @@
 <?php
 
 /**
- * This extension provides a parser function #createpageifnotex that can be used to create
- * additional auxiliary pages when a page is saved. New pages are only created if they do
- * not exist yet. The function takes two parameters: (1) the title of the new page, 
- * (2) the text to be used on the new page. It is possible to use &lt;nowiki&gt; tags in the
- * text to inserst wiki markup more conveniently.
- * 
- * The created page is attributed to the user who made the edit. The original idea for this
- * code was edveloped by Daniel Herzig at AIFB Karlsruhe. In his code, there were some further
- * facilities to show a message to the user about the pages that have been auto-created. This
- * is not implemented here yet (the basic way of doing this would be to insert some custom
- * HTML during 'OutputPageBeforeHTML').
- *
- * The code restricts the use of the parser function to MediaWiki content namespaces. So
- * templates, for example, cannot create new pages by accident. Also, the code prevents created
- * pages from creating further pages to avoid (unbounded) chains of page creations.
- *
- * @author Markus Kroetzsch
- * @author Daniel Herzig
- * @file
- */
-
-if ( !defined( 'MEDIAWIKI' ) ) {
-	die( 'Not an entry point.' );
-}
-
-/**
  * This is decreased during page creation to avoid infinite recursive creation of pages.
  */
 $egAutoCreatePageMaxRecursion = 1;
@@ -34,17 +8,6 @@ $egAutoCreatePageMaxRecursion = 1;
 $egAutoCreatePageIgnoreEmptyTitle = false;
 
 $egAutoCreatePageNamespaces = $wgContentNamespaces;
-
-$GLOBALS['wgExtensionCredits']['other'][] = array(
-	'name'         => 'AutoCreatePage',
-	'version'      => '0.6',
-	'author'       => '[http://korrekt.org Markus Krötzsch], Daniel Herzig', 
-	'url'          => ' ',
-	'description'  => 'Provides a parser function to create additional wiki pages with default content when saving a page.', //TODO i18n
-	'license-name' => 'GPL-2.0+'
-);
-
-$GLOBALS['wgExtensionMessagesFiles']['AutoCreatePageMagic'] =  dirname(__FILE__) . '/AutoCreatePage.i18n.magic.php';
 
 $GLOBALS['wgExtensionFunctions'][] = function() {
 
