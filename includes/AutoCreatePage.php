@@ -18,8 +18,6 @@ $GLOBALS['wgExtensionFunctions'][] = function() {
 		} );
 
 	};
-
-	$GLOBALS['wgHooks']['ArticleEditUpdates'][] = 'doCreatePages';
 };
 
 /**
@@ -27,7 +25,7 @@ $GLOBALS['wgExtensionFunctions'][] = function() {
  * filling them with the given default content. It is possible to use &lt;nowiki&gt;
  * in the default text parameter to insert verbatim wiki text.
  */
-function createPageIfNotExisting( array $rawParams ) {
+public static function createPageIfNotExisting( array $rawParams ) {
 	global $wgAutoCreatePageMaxRecursion, $wgAutoCreatePageIgnoreEmptyTitle, $wgAutoCreatePageNamespaces;
 
 	if ( $wgAutoCreatePageMaxRecursion <= 0 ) {
@@ -61,12 +59,12 @@ function createPageIfNotExisting( array $rawParams ) {
 	// Store data in the parser output for later use:
 	$createPageData = $parser->getOutput()->getExtensionData( 'createPage' );
 	if ( is_null( $createPageData ) ) {
-		$createPageData = array();
+		$createPageData = [];
 	}
 	$createPageData[$newPageTitleText] = $newPageContent;
 	$parser->getOutput()->setExtensionData( 'createPage', $createPageData );
 
-	return "";
+	return '';
 }
 
 /**
@@ -74,7 +72,7 @@ function createPageIfNotExisting( array $rawParams ) {
  * after the safe is complete to avoid any concurrent article modifications.
  * Note that article is, in spite of its name, a WikiPage object since MW 1.21.
  */
-function doCreatePages( &$article, &$editInfo, $changed ) {
+public static function doCreatePages( &$article, &$editInfo, $changed ) {
 	global $wgAutoCreatePageMaxRecursion;
 
 	$createPageData = $editInfo->output->getExtensionData( 'createPage' );
@@ -90,15 +88,12 @@ function doCreatePages( &$article, &$editInfo, $changed ) {
 
 	foreach ( $createPageData as $pageTitleText => $pageContentText ) {
 		$pageTitle = Title::newFromText( $pageTitleText );
-		// wfDebugLog( 'createpage', "CREATE " . $pageTitle->getText() . " Text: " . $pageContent );
 
 		if ( !is_null( $pageTitle ) && !$pageTitle->isKnown() && $pageTitle->canExist() ){
 			$newWikiPage = new WikiPage( $pageTitle );
 			$pageContent = ContentHandler::makeContent( $pageContentText, $sourceTitle );
 			$newWikiPage->doEditContent( $pageContent,
 				"Page created automatically by parser function on page [[$sourceTitleText]]" ); //TODO i18n
-
-			// wfDebugLog( 'createpage', "CREATED PAGE " . $pageTitle->getText() . " Text: " . $pageContent );
 		}
 	}
 
