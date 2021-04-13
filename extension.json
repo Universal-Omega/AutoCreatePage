@@ -23,7 +23,7 @@
 		]
 	},
 	"AutoloadClasses": {
-		"AutoCreatePage": "includes/AutoCreatePage.class.php"
+		"AutoCreatePage": "AutoCreatePage.class.php"
 	},
 	"Hooks": {
 		"ArticleEditUpdates": "AutoCreatePage::doCreatePages",
