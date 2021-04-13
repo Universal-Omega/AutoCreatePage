@@ -52,9 +52,9 @@ directory of your MediaWiki installation. You can do this with git by calling:
 
 from your extension directory. Then add to your LocalSettings.php:
 
-`include_once "$IP/extensions/AutoCreatePage/AutoCreatePage.php";`
+`wfLoadExtension( 'AutoCreatePage' );`
 
-The code requires MediaWiki 1.21 to work. It has been tested on MediaWiki 1.23.
+This extension requires MediaWiki 1.35.0+ to work. It has been tested on MediaWiki 1.23.
 Future versions might also work.
 
 
@@ -64,19 +64,19 @@ Configuration
 The extension supports three configuration variables, that can be set in
 LocalSettings.php.
 
-`$egAutoCreatePageMaxRecursion`: The maximum recursion depth to which calls of
+`$wgAutoCreatePageMaxRecursion`: The maximum recursion depth to which calls of
 `createpageifnotex` are executed on created pages. Default: 1.
 
-`$egAutoCreatePageIgnoreEmptyTitle`: If invocations of `createpageifnotex`
+`$wgAutoCreatePageIgnoreEmptyTitle`: If invocations of `createpageifnotex`
 should be silently ignored. Default: false (will put an error message on the
 wiki page).
 
-`$egAutoCreatePageNamespaces`: The list of namespaces in which calls of
+`$wgAutoCreatePageNamespaces`: The list of namespaces in which calls of
 `createpageifnotex` are executed. If your call originates from a page not in
 one of these namespaces, it gets ignored. Defaults to `$wgContentNamespaces`.
 Example:
 ```php
-$egAutoCreatePageNamespaces = [ NS_MAIN, NS_USER, NS_CUSTOM ];
+$wgAutoCreatePageNamespaces = [ NS_MAIN, NS_USER, NS_CUSTOM ];
 ```
 
 Status
@@ -93,6 +93,6 @@ Credits
 -------
 
 The original idea and first implementation was done by Daniel Herzig (AIFB). The code
-was modernized to work with MediaWiki 1.23 by Markus Kroetzsch.
+was modernized to work with MediaWiki 1.23 by Markus Kroetzsch. The extension was reorganised in order to be converted to ExtensionRegistry by Universal Omega.
 
 The code is licensed under GPLv2.
