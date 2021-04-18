@@ -1,6 +1,8 @@
 <?php
 
-class AutoCreatePage {
+use MediaWiki\Edit\PreparedEdit;
+
+class AutoCreatePageHooks {
 	public static function onRegistration() {
 		global $wgAutoCreatePageMaxRecursion, $wgAutoCreatePageIgnoreEmptyTitle, $wgAutoCreatePageNamespaces, $wgContentNamespaces;
 
@@ -22,9 +24,8 @@ class AutoCreatePage {
 	}
 
 	/**
-	 * Handles the parser function for creating pages that don't exist yet,
-	 * filling them with the given default content. It is possible to use &lt;nowiki&gt;
-	 * in the default text parameter to insert verbatim wiki text.
+	 * @param array $rawParams
+	 * @return string
 	 */
 	public static function createPageIfNotExisting( array $rawParams ) {
 		global $wgAutoCreatePageMaxRecursion, $wgAutoCreatePageIgnoreEmptyTitle, $wgAutoCreatePageNamespaces;
@@ -68,12 +69,13 @@ class AutoCreatePage {
 		return '';
 	}
 
+	
 	/**
-	 * Creates pages that have been requested by the creat page parser function. This is done only
-	 * after the safe is complete to avoid any concurrent article modifications.
-	 * Note that article is, in spite of its name, a WikiPage object since MW 1.21.
+	 * @param WikiPage &$wikiPage
+	 * @param PreparedEdit &$editInfo
+	 * @param bool $changed
 	 */
-	public static function doCreatePages( &$article, &$editInfo, $changed ) {
+	public static function onArticleEditUpdates( WikiPage &$wikiPage, PreparedEdit &$editInfo, bool $changed ) {
 		global $wgAutoCreatePageMaxRecursion;
 
 		$createPageData = $editInfo->output->getExtensionData( 'createPage' );
@@ -84,7 +86,7 @@ class AutoCreatePage {
 		// Prevent pages to be created by pages that are created to avoid loops:
 		$wgAutoCreatePageMaxRecursion--;
 
-		$sourceTitle = $article->getTitle();
+		$sourceTitle = $wikiPage->getTitle();
 		$sourceTitleText = $sourceTitle->getPrefixedText();
 
 		foreach ( $createPageData as $pageTitleText => $pageContentText ) {
@@ -101,8 +103,6 @@ class AutoCreatePage {
 		// Reset state. Probably not needed since parsing is usually done here anyway:
 		$editInfo->output->setExtensionData( 'createPage', null ); 
 		$wgAutoCreatePageMaxRecursion++;
-
-		return true;
 	}
 }
 
