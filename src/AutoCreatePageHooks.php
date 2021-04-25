@@ -59,10 +59,11 @@ class AutoCreatePageHooks {
 	}
 
 	/**
+	 * @param Parser $parser
 	 * @param array $rawParams
 	 * @return string
 	 */
-	public static function createPageIfNotExisting( array $rawParams ) {
+	public static function createPageIfNotExisting( Parser $parser, array $rawParams ) {
 		global $wgAutoCreatePageMaxRecursion, $wgAutoCreatePageIgnoreEmptyTitle, $wgAutoCreatePageNamespaces;
 
 		if ( $wgAutoCreatePageMaxRecursion <= 0 ) {
