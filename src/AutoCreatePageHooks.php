@@ -60,21 +60,18 @@ class AutoCreatePageHooks {
 
 	/**
 	 * @param Parser $parser
-	 * @param array $rawParams
+	 * @param string $newPageTitleText
+	 * @param string $newPageContent
 	 * @return string
 	 */
-	public static function createPageIfNotExisting( Parser $parser, array $rawParams ) {
+	public static function createPageIfNotExisting( Parser $parser, string $newPageTitleText, string $newPageContent ) {
 		global $wgAutoCreatePageMaxRecursion, $wgAutoCreatePageIgnoreEmptyTitle, $wgAutoCreatePageNamespaces;
 
 		if ( $wgAutoCreatePageMaxRecursion <= 0 ) {
 			return 'Error: Recursion level for auto-created pages exeeded.'; //TODO i18n
 		}
 
-		if ( isset( $rawParams[0] ) && isset( $rawParams[1] ) && isset( $rawParams[2] ) ) {
-			$parser = $rawParams[0];
-			$newPageTitleText = $rawParams[1];
-			$newPageContent = $rawParams[2];
-		} else {
+		if ( !isset( $parser ) || !isset( $newPageTitleText ) || !isset( $newPageContent ) ) {
 			throw new MWException( 'Hook invoked with missing parameters.' );
 		}
 
