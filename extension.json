@@ -1,6 +1,6 @@
 {
 	"name": "AutoCreatePage",
-	"version": "0.7",
+	"version": "0.8",
 	"author": [
 		"Universal Omega",
 		"Markus Krötzsch",
@@ -12,7 +12,7 @@
 	"type": "parserhook",
 	"callback": "AutoCreatePageHooks::onRegistration",
 	"requires": {
-		"MediaWiki": ">= 1.35.0"
+		"MediaWiki": ">= 1.36.0"
 	},
 	"ExtensionMessagesFiles": {
 		"AutoCreatePageMagic": "AutoCreatePage.i18n.magic.php"
@@ -26,8 +26,8 @@
 		"AutoCreatePageHooks": "src/AutoCreatePageHooks.php"
 	},
 	"Hooks": {
-		"ArticleEditUpdates": "AutoCreatePageHooks::onArticleEditUpdates",
-		"ParserFirstCallInit": "AutoCreatePageHooks::onParserFirstCallInit"
+		"ParserFirstCallInit": "AutoCreatePageHooks::onParserFirstCallInit",
+		"RevisionDataUpdates": "AutoCreatePageHooks::onRevisionDataUpdates"
 	},
 	"manifest_version": 2
 }
