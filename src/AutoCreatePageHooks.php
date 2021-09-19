@@ -1,6 +1,8 @@
 <?php
 
 use MediaWiki\Edit\PreparedEdit;
+use MediaWiki\MediaWikiServices;
+use MediaWiki\Revision\RenderedRevision;
 
 class AutoCreatePageHooks {
 	public static function onRegistration() {
@@ -17,14 +19,25 @@ class AutoCreatePageHooks {
 	}
 
 	/**
-	 * @param WikiPage &$wikiPage
-	 * @param PreparedEdit &$editInfo
-	 * @param bool $changed
+	 * @param Title $title
+	 * @param RenderedRevision $renderedRevision
+	 * @param array &$updates
 	 */
-	public static function onArticleEditUpdates( WikiPage &$wikiPage, PreparedEdit &$editInfo, bool $changed ) {
+	public static function onRevisionDataUpdates( Title $title, RenderedRevision $renderedRevision, array &$updates ) {
 		global $wgAutoCreatePageMaxRecursion;
 
-		$createPageData = $editInfo->output->getExtensionData( 'createPage' );
+		$wikiPageFactory = MediaWikiServices::getInstance()->getWikiPageFactory();
+		$wikiPage = $wikiPageFactory->newFromTitle( $title );
+
+		$options = $wikiPage->makeParserOptions( RequestContext::getMain() );
+		$output = $wikiPage->getParserOutput( $options );
+		$edit = new PreparedEdit();
+
+		$edit->parserOutputCallback = static function () use ( $output ) {
+			return $output;
+		};
+
+		$createPageData = $edit->getOutput()->getExtensionData( 'createPage' );
 		if ( is_null( $createPageData ) ) {
 			return true; // no pages to create
 		}
@@ -39,7 +52,7 @@ class AutoCreatePageHooks {
 			$pageTitle = Title::newFromText( $pageTitleText );
 
 			if ( !is_null( $pageTitle ) && !$pageTitle->isKnown() && $pageTitle->canExist() ){
-				$newWikiPage = new WikiPage( $pageTitle );
+				$newWikiPage = $wikiPageFactory->newFromTitle( $pageTitle );
 				$pageContent = ContentHandler::makeContent( $pageContentText, $sourceTitle );
 				$newWikiPage->doEditContent( $pageContent,
 					"Page created automatically by parser function on page [[$sourceTitleText]]" ); //TODO i18n
@@ -47,7 +60,7 @@ class AutoCreatePageHooks {
 		}
 
 		// Reset state. Probably not needed since parsing is usually done here anyway:
-		$editInfo->output->setExtensionData( 'createPage', null ); 
+		$edit->getOutput()->setExtensionData( 'createPage', null ); 
 		$wgAutoCreatePageMaxRecursion++;
 	}
 

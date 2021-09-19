@@ -54,7 +54,7 @@ from your extension directory. Then add to your LocalSettings.php:
 
 `wfLoadExtension( 'AutoCreatePage' );`
 
-This extension requires MediaWiki 1.35.0+ to work.
+This extension requires MediaWiki 1.36.0+ to work.
 
 
 Configuration
