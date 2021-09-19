@@ -1,6 +1,7 @@
 <?php
 
 use MediaWiki\Edit\PreparedEdit;
+use MediaWiki\MediaWikiServices;
 use MediaWiki\Revision\RenderedRevision;
 
 class AutoCreatePageHooks {
