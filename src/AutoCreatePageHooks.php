@@ -33,7 +33,7 @@ class AutoCreatePageHooks {
 		$output = $wikiPage->getParserOutput( $options );
 		$edit = new PreparedEdit();
 
-		$edit->parserOutputCallback = static function () {
+		$edit->parserOutputCallback = static function ( $output ) {
 			return $output;
 		};
 
