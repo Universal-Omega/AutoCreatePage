@@ -102,7 +102,7 @@ class AutoCreatePageHooks {
 		}
 
 		// Get the raw text of $newPageContent as it was before stripping <nowiki>:
-		$newPageContent = $parser->mStripState->unstripNoWiki( $newPageContent );
+		$newPageContent = $parser->getStripState()->unstripNoWiki( $newPageContent );
 
 		// Store data in the parser output for later use:
 		$createPageData = $parser->getOutput()->getExtensionData( 'createPage' );
