@@ -5,18 +5,6 @@ use MediaWiki\MediaWikiServices;
 use MediaWiki\Revision\RenderedRevision;
 
 class AutoCreatePageHooks {
-	public static function onRegistration() {
-		global $wgAutoCreatePageMaxRecursion, $wgAutoCreatePageIgnoreEmptyTitle, $wgAutoCreatePageNamespaces, $wgContentNamespaces;
-
-		/**
-		 * This is decreased during page creation to avoid infinite recursive creation of pages.
-		 */
-		$wgAutoCreatePageMaxRecursion = 1;
-
-		$wgAutoCreatePageIgnoreEmptyTitle = false;
-
-		$wgAutoCreatePageNamespaces = $wgContentNamespaces;
-	}
 
 	/**
 	 * @param Title $title
@@ -78,7 +66,8 @@ class AutoCreatePageHooks {
 	 * @return string
 	 */
 	public static function createPageIfNotExisting( Parser $parser, string $newPageTitleText, string $newPageContent ) {
-		global $wgAutoCreatePageMaxRecursion, $wgAutoCreatePageIgnoreEmptyTitle, $wgAutoCreatePageNamespaces;
+		global $wgAutoCreatePageMaxRecursion, $wgAutoCreatePageIgnoreEmptyTitle,
+			$wgAutoCreatePageNamespaces, $wgContentNamespaces;
 
 		if ( $wgAutoCreatePageMaxRecursion <= 0 ) {
 			return 'Error: Recursion level for auto-created pages exeeded.'; //TODO i18n
@@ -96,8 +85,9 @@ class AutoCreatePageHooks {
 			}
 		}
 
+		$namespaces = $wgAutoCreatePageNamespaces ?: $wgContentNamespaces;
 		// Create pages only if the page calling the parser function is within defined namespaces
-		if ( !in_array( $parser->getTitle()->getNamespace(), $wgAutoCreatePageNamespaces ) ) {
+		if ( !in_array( $parser->getTitle()->getNamespace(), $namespaces ) ) {
 			return '';
 		}
 

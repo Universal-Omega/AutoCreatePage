@@ -1,6 +1,6 @@
 {
 	"name": "AutoCreatePage",
-	"version": "0.8",
+	"version": "0.9",
 	"author": [
 		"Universal Omega",
 		"Markus Krötzsch",
@@ -10,7 +10,6 @@
 	"url": "https://www.mediawiki.org/wiki/Extension:AutoCreatePage",
 	"descriptionmsg": "autocreatepage-desc",
 	"type": "parserhook",
-	"callback": "AutoCreatePageHooks::onRegistration",
 	"requires": {
 		"MediaWiki": ">= 1.36.0"
 	},
@@ -28,6 +27,17 @@
 	"Hooks": {
 		"ParserFirstCallInit": "AutoCreatePageHooks::onParserFirstCallInit",
 		"RevisionDataUpdates": "AutoCreatePageHooks::onRevisionDataUpdates"
+	},
+	"config": {
+		"AutoCreatePageIgnoreEmptyTitle": {
+			"value": false
+		},
+		"AutoCreatePageMaxRecursion": {
+			"value": 1
+		},
+		"AutoCreatePageNamespaces": {
+			"value": []
+		}
 	},
 	"manifest_version": 2
 }
