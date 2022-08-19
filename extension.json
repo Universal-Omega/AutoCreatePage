@@ -29,7 +29,7 @@
 		"RevisionDataUpdates": "AutoCreatePageHooks::onRevisionDataUpdates"
 	},
 	"config": {
-		"AutoCreatePageIgnoreEmptyTitle ": {
+		"AutoCreatePageIgnoreEmptyTitle": {
 			"value": false
 		},
 		"AutoCreatePageMaxRecursion": {
