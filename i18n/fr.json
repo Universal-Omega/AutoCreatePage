@@ -1,0 +1,8 @@
+{
+	"@metadata": {
+		"authors": [
+			"Verdy p"
+		]
+	},
+	"autocreatepage-desc": "Fournit une fonction d’analyseur pour créer des pages wiki supplémentaires avec un contenu par défaut lors de l’enregistrement d’une page."
+}
