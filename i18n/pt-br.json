@@ -1,0 +1,8 @@
+{
+	"@metadata": {
+		"authors": [
+			"Eduardoaddad"
+		]
+	},
+	"autocreatepage-desc": "Fornece uma função do analisador sintático para criar páginas wiki adicionais com conteúdo padrão ao salvar uma página."
+}
