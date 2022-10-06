@@ -1,0 +1,8 @@
+{
+	"@metadata": {
+		"authors": [
+			"Lakejason0"
+		]
+	},
+	"autocreatepage-desc": "提供解析器函数以在保存页面时使用默认内容创建其他wiki页面。"
+}
