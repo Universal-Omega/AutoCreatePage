@@ -1,0 +1,8 @@
+{
+	"@metadata": {
+		"authors": [
+			"Sabelöga"
+		]
+	},
+	"autocreatepage-desc": "Tillhandahåller en parser-funktion för att skapa ytterligare wikisidor med standardinnehåll för man para en sida."
+}
