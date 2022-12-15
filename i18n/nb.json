@@ -1,0 +1,8 @@
+{
+	"@metadata": {
+		"authors": [
+			"Jon Harald Søby"
+		]
+	},
+	"autocreatepage-desc": "Tilbyr en parserfunksjon for å opprette wikisider med standardinnhold når man lagrer en side."
+}
