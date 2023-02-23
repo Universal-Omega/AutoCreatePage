@@ -1,0 +1,8 @@
+{
+	"@metadata": {
+		"authors": [
+			"Kly"
+		]
+	},
+	"autocreatepage-desc": "提供解析函數來在保存頁面時建立帶有預設內容的額外 wiki 頁面。"
+}
