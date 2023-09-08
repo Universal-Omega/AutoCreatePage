@@ -14,41 +14,39 @@ class AutoCreatePageHooks {
 	public static function onRevisionDataUpdates( Title $title, RenderedRevision $renderedRevision, array &$updates ) {
 		global $wgAutoCreatePageMaxRecursion;
 
-		$wikiPageFactory = MediaWikiServices::getInstance()->getWikiPageFactory();
-		$wikiPage = $wikiPageFactory->newFromTitle( $title );
+		$output = $renderedRevision->getRevisionParserOutput();
+		$createPageData = $output->getExtensionData( 'createPage' );
 
-		$options = $wikiPage->makeParserOptions( RequestContext::getMain() );
-		$output = $wikiPage->getParserOutput( $options );
-		$edit = new PreparedEdit();
-
-		$edit->parserOutputCallback = static function () use ( $output ) {
-			return $output;
-		};
-
-		$createPageData = $edit->getOutput()->getExtensionData( 'createPage' );
 		if ( is_null( $createPageData ) ) {
 			return true; // no pages to create
 		}
-
 		// Prevent pages to be created by pages that are created to avoid loops:
 		$wgAutoCreatePageMaxRecursion--;
 
-		$sourceTitle = $wikiPage->getTitle();
-		$sourceTitleText = $sourceTitle->getPrefixedText();
+		$sourceTitleText = $title->getPrefixedText();
 
 		foreach ( $createPageData as $pageTitleText => $pageContentText ) {
 			$pageTitle = Title::newFromText( $pageTitleText );
 
 			if ( !is_null( $pageTitle ) && !$pageTitle->isKnown() && $pageTitle->canExist() ){
-				$newWikiPage = $wikiPageFactory->newFromTitle( $pageTitle );
-				$pageContent = ContentHandler::makeContent( $pageContentText, $sourceTitle );
-				$newWikiPage->doEditContent( $pageContent,
-					"Page created automatically by parser function on page [[$sourceTitleText]]" ); //TODO i18n
+				$newWikiPage = MediaWikiServices::getInstance()->getWikiPageFactory()->newFromTitle( $pageTitle );
+				$pageContent = ContentHandler::makeContent( $pageContentText, $pageTitle );
+
+				// WikiPage:doEditContent has been removed, page update is being refactored.
+				// please check out https://github.com/wikimedia/mediawiki/blob/master/docs/pageupdater.md
+				// the following takes care of this change for REL1_39.
+				$updater = $newWikiPage->newPageUpdater( $renderedRevision->getRevision()->getUser() );
+				$updater->setContent( \MediaWiki\Revision\SlotRecord::MAIN, $pageContent );
+				$updater->setRcPatrolStatus( RecentChange::PRC_PATROLLED );
+				$comment = CommentStoreComment::newUnsavedComment(
+					"Page created automatically by parser function on page [[$sourceTitleText]]"
+				); //TODO i18n
+				$updater->saveRevision( $comment );
 			}
 		}
 
 		// Reset state. Probably not needed since parsing is usually done here anyway:
-		$edit->getOutput()->setExtensionData( 'createPage', null ); 
+		$output->setExtensionData( 'createPage', null );
 		$wgAutoCreatePageMaxRecursion++;
 	}
 
@@ -70,7 +68,7 @@ class AutoCreatePageHooks {
 			$wgAutoCreatePageNamespaces, $wgContentNamespaces;
 
 		if ( $wgAutoCreatePageMaxRecursion <= 0 ) {
-			return 'Error: Recursion level for auto-created pages exeeded.'; //TODO i18n
+			return 'Error: Recursion level for auto-created pages exceeded.'; //TODO i18n
 		}
 
 		if ( !isset( $parser ) || !isset( $newPageTitleText ) || !isset( $newPageContent ) ) {
