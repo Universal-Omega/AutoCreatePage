@@ -66,9 +66,13 @@ LocalSettings.php.
 `$wgAutoCreatePageMaxRecursion`: The maximum recursion depth to which calls of
 `createpageifnotex` are executed on created pages. Default: 1.
 
+`$wgAutoCreatePageIgnoreEmptyContent`: If invocations of `createpageifnotex`
+should silently ignore missing page content. Default: false (will put an error
+message on the wiki page).
+
 `$wgAutoCreatePageIgnoreEmptyTitle`: If invocations of `createpageifnotex`
-should be silently ignored. Default: false (will put an error message on the
-wiki page).
+should silently ignore missing page title. Default: false (will put an error
+message on the wiki page).
 
 `$wgAutoCreatePageNamespaces`: The list of namespaces in which calls of
 `createpageifnotex` are executed. If your call originates from a page not in

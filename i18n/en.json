@@ -4,5 +4,10 @@
 			"Universal Omega"
 		]
 	},
-	"autocreatepage-desc": "Provides a parser function to create additional wiki pages with default content when saving a page."
+	"autocreatepage-desc": "Provides a parser function to create additional wiki pages with default content when saving a page.",
+	"autocreatepage-error-empty-content": "Error: For a page to be created, page content must be provided.",
+	"autocreatepage-error-empty-title": "Error: this function must be given a valid title text for the page to be created. $1",
+	"autocreatepage-error-missing-hook-parameter": "Hook invoked with missing parameters.",
+	"autocreatepage-error-recursion-level-exceeded": "Error: Recursion level for auto-created pages exceeded.",
+	"autocreatepage-revision-comment": "Page created automatically by parser function on page [[$1]]"
 }

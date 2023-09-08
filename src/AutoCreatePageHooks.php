@@ -39,8 +39,8 @@ class AutoCreatePageHooks {
 				$updater->setContent( \MediaWiki\Revision\SlotRecord::MAIN, $pageContent );
 				$updater->setRcPatrolStatus( RecentChange::PRC_PATROLLED );
 				$comment = CommentStoreComment::newUnsavedComment(
-					"Page created automatically by parser function on page [[$sourceTitleText]]"
-				); //TODO i18n
+					wfMessage( 'autocreatepage-revision-comment', $sourceTitleText )->inContentLanguage()->text()
+				);
 				$updater->saveRevision( $comment );
 			}
 		}
@@ -62,22 +62,28 @@ class AutoCreatePageHooks {
 	 * @param string $newPageTitleText
 	 * @param string $newPageContent
 	 * @return string
+	 *
+	 * @throws MWException
 	 */
 	public static function createPageIfNotExisting( Parser $parser, string $newPageTitleText, string $newPageContent ) {
 		global $wgAutoCreatePageMaxRecursion, $wgAutoCreatePageIgnoreEmptyTitle,
-			$wgAutoCreatePageNamespaces, $wgContentNamespaces;
+			$wgAutoCreatePageNamespaces, $wgContentNamespaces, $wgAutoCreatePageIgnoreEmptyContent;
 
 		if ( $wgAutoCreatePageMaxRecursion <= 0 ) {
-			return 'Error: Recursion level for auto-created pages exceeded.'; //TODO i18n
-		}
-
-		if ( !isset( $parser ) || !isset( $newPageTitleText ) || !isset( $newPageContent ) ) {
-			throw new MWException( 'Hook invoked with missing parameters.' );
+			return wfMessage( 'autocreatepage-error-recursion-level-exceeded' )->inContentLanguage()->text();
 		}
 
 		if ( empty( $newPageTitleText ) ) {
 			if ( $wgAutoCreatePageIgnoreEmptyTitle === false ) {
-				return 'Error: this function must be given a valid title text for the page to be created.'; //TODO i18n
+				return wfMessage( 'autocreatepage-error-empty-title' )->inContentLanguage()->text();
+			} else {
+				return '';
+			}
+		}
+
+		if ( !isset( $newPageContent ) ) {
+			if ( $wgAutoCreatePageIgnoreEmptyContent === false ) {
+				return wfMessage( 'autocreatepage-error-empty-content' )->inContentLanguage()->text();
 			} else {
 				return '';
 			}
@@ -85,7 +91,7 @@ class AutoCreatePageHooks {
 
 		$namespaces = $wgAutoCreatePageNamespaces ?: $wgContentNamespaces;
 		// Create pages only if the page calling the parser function is within defined namespaces
-		if ( !in_array( $parser->getTitle()->getNamespace(), $namespaces ) ) {
+		if ( !in_array( $parser->getPage()->getNamespace(), $namespaces ) ) {
 			return '';
 		}
 
