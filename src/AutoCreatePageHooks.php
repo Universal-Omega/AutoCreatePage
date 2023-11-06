@@ -14,41 +14,39 @@ class AutoCreatePageHooks {
 	public static function onRevisionDataUpdates( Title $title, RenderedRevision $renderedRevision, array &$updates ) {
 		global $wgAutoCreatePageMaxRecursion;
 
-		$wikiPageFactory = MediaWikiServices::getInstance()->getWikiPageFactory();
-		$wikiPage = $wikiPageFactory->newFromTitle( $title );
+		$output = $renderedRevision->getRevisionParserOutput();
+		$createPageData = $output->getExtensionData( 'createPage' );
 
-		$options = $wikiPage->makeParserOptions( RequestContext::getMain() );
-		$output = $wikiPage->getParserOutput( $options );
-		$edit = new PreparedEdit();
-
-		$edit->parserOutputCallback = static function () use ( $output ) {
-			return $output;
-		};
-
-		$createPageData = $edit->getOutput()->getExtensionData( 'createPage' );
 		if ( is_null( $createPageData ) ) {
 			return true; // no pages to create
 		}
-
 		// Prevent pages to be created by pages that are created to avoid loops:
 		$wgAutoCreatePageMaxRecursion--;
 
-		$sourceTitle = $wikiPage->getTitle();
-		$sourceTitleText = $sourceTitle->getPrefixedText();
+		$sourceTitleText = $title->getPrefixedText();
 
 		foreach ( $createPageData as $pageTitleText => $pageContentText ) {
 			$pageTitle = Title::newFromText( $pageTitleText );
 
 			if ( !is_null( $pageTitle ) && !$pageTitle->isKnown() && $pageTitle->canExist() ){
-				$newWikiPage = $wikiPageFactory->newFromTitle( $pageTitle );
-				$pageContent = ContentHandler::makeContent( $pageContentText, $sourceTitle );
-				$newWikiPage->doEditContent( $pageContent,
-					"Page created automatically by parser function on page [[$sourceTitleText]]" ); //TODO i18n
+				$newWikiPage = MediaWikiServices::getInstance()->getWikiPageFactory()->newFromTitle( $pageTitle );
+				$pageContent = ContentHandler::makeContent( $pageContentText, $pageTitle );
+
+				// WikiPage:doEditContent has been removed, page update is being refactored.
+				// please check out https://github.com/wikimedia/mediawiki/blob/master/docs/pageupdater.md
+				// the following takes care of this change for REL1_39.
+				$updater = $newWikiPage->newPageUpdater( $renderedRevision->getRevision()->getUser() );
+				$updater->setContent( \MediaWiki\Revision\SlotRecord::MAIN, $pageContent );
+				$updater->setRcPatrolStatus( RecentChange::PRC_PATROLLED );
+				$comment = CommentStoreComment::newUnsavedComment(
+					wfMessage( 'autocreatepage-revision-comment', $sourceTitleText )->inContentLanguage()->text()
+				);
+				$updater->saveRevision( $comment );
 			}
 		}
 
 		// Reset state. Probably not needed since parsing is usually done here anyway:
-		$edit->getOutput()->setExtensionData( 'createPage', null ); 
+		$output->setExtensionData( 'createPage', null );
 		$wgAutoCreatePageMaxRecursion++;
 	}
 
@@ -64,22 +62,28 @@ class AutoCreatePageHooks {
 	 * @param string $newPageTitleText
 	 * @param string $newPageContent
 	 * @return string
+	 *
+	 * @throws MWException
 	 */
 	public static function createPageIfNotExisting( Parser $parser, string $newPageTitleText, string $newPageContent ) {
 		global $wgAutoCreatePageMaxRecursion, $wgAutoCreatePageIgnoreEmptyTitle,
-			$wgAutoCreatePageNamespaces, $wgContentNamespaces;
+			$wgAutoCreatePageNamespaces, $wgContentNamespaces, $wgAutoCreatePageIgnoreEmptyContent;
 
 		if ( $wgAutoCreatePageMaxRecursion <= 0 ) {
-			return 'Error: Recursion level for auto-created pages exeeded.'; //TODO i18n
-		}
-
-		if ( !isset( $parser ) || !isset( $newPageTitleText ) || !isset( $newPageContent ) ) {
-			throw new MWException( 'Hook invoked with missing parameters.' );
+			return wfMessage( 'autocreatepage-error-recursion-level-exceeded' )->inContentLanguage()->text();
 		}
 
 		if ( empty( $newPageTitleText ) ) {
 			if ( $wgAutoCreatePageIgnoreEmptyTitle === false ) {
-				return 'Error: this function must be given a valid title text for the page to be created.'; //TODO i18n
+				return wfMessage( 'autocreatepage-error-empty-title' )->inContentLanguage()->text();
+			} else {
+				return '';
+			}
+		}
+
+		if ( !isset( $newPageContent ) ) {
+			if ( $wgAutoCreatePageIgnoreEmptyContent === false ) {
+				return wfMessage( 'autocreatepage-error-empty-content' )->inContentLanguage()->text();
 			} else {
 				return '';
 			}
@@ -87,7 +91,7 @@ class AutoCreatePageHooks {
 
 		$namespaces = $wgAutoCreatePageNamespaces ?: $wgContentNamespaces;
 		// Create pages only if the page calling the parser function is within defined namespaces
-		if ( !in_array( $parser->getTitle()->getNamespace(), $namespaces ) ) {
+		if ( !in_array( $parser->getPage()->getNamespace(), $namespaces ) ) {
 			return '';
 		}
 

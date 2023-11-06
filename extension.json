@@ -32,6 +32,9 @@
 		"AutoCreatePageIgnoreEmptyTitle": {
 			"value": false
 		},
+		"AutoCreatePageIgnoreEmptyContent": {
+			"value": false
+		},
 		"AutoCreatePageMaxRecursion": {
 			"value": 1
 		},
