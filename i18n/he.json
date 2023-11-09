@@ -4,5 +4,10 @@
 			"Amire80"
 		]
 	},
-	"autocreatepage-desc": "מספקת פונקציית מפענח ליצירת דפי ויקי נוספים עם תוכן ברירת מחדל בעת שמירת דף."
+	"autocreatepage-desc": "מספקת פונקציית מפענח ליצירת דפי ויקי נוספים עם תוכן ברירת מחדל בעת שמירת דף.",
+	"autocreatepage-error-empty-content": "שגיאה: כדי שדף ייווצר, יש לספק תוכן דף.",
+	"autocreatepage-error-empty-title": "שגיאה: יש לתת לפונקציה הזאת טקסט כותרת תקין כדי ליצור את הדף. $1",
+	"autocreatepage-error-missing-hook-parameter": "הופעל hook עם פרמטרים חסרים.",
+	"autocreatepage-error-recursion-level-exceeded": "שגיאה: חריגה מרמת הרקורסיה עבור דפים שנוצרו אוטומטית.",
+	"autocreatepage-revision-comment": "דף שנוצר אוטומטית על־ידי פונקציית מפענח בדף [[$1]]"
 }

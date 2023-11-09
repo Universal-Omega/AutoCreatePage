@@ -1,0 +1,10 @@
+{
+	"@metadata": {
+		"authors": [
+			"Beta16"
+		]
+	},
+	"autocreatepage-error-empty-content": "Errore: per creare una pagina, è necessario fornire il contenuto della pagina.",
+	"autocreatepage-error-missing-hook-parameter": "Hook invocato con parametri mancanti.",
+	"autocreatepage-revision-comment": "Pagina creata automaticamente dalla funzione parser nella pagina [[$1]]"
+}
