@@ -4,5 +4,10 @@
 			"McDutchie"
 		]
 	},
-	"autocreatepage-desc": "Forni un function del analysator syntactic pro crear paginas wiki additional con contento predefinite quando se salveguarda un pagina."
+	"autocreatepage-desc": "Forni un function del analysator syntactic pro crear paginas wiki additional con contento predefinite quando se salveguarda un pagina.",
+	"autocreatepage-error-empty-content": "Error: pro crear un pagina, su contento debe esser fornite.",
+	"autocreatepage-error-empty-title": "Error: es necessari dar a iste function un texto de titulo valide pro le pagina a crear. $1",
+	"autocreatepage-error-missing-hook-parameter": "<i>Hook</i> invocate con parametros mancante.",
+	"autocreatepage-error-recursion-level-exceeded": "Error: Ha essite excedite le nivello de recursion pro paginas automaticamente create.",
+	"autocreatepage-revision-comment": "Pagina create automaticamente per le function del analysator syntactic sur le pagina [[$1]]"
 }
