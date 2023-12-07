@@ -4,5 +4,10 @@
 			"Eleassar"
 		]
 	},
-	"autocreatepage-desc": "Zagotavlja funkcijo razčlenjevalnika za ustvarjanje dodatnih viki strani s privzeto vsebino pri shranjevanju strani."
+	"autocreatepage-desc": "Zagotavlja funkcijo razčlenjevalnika za ustvarjanje dodatnih viki strani s privzeto vsebino pri shranjevanju strani.",
+	"autocreatepage-error-empty-content": "Napaka: Če želite ustvariti stran, morate predložiti vsebino strani.",
+	"autocreatepage-error-empty-title": "Napaka: Tej funkciji je treba dati veljavno naslovno besedilo za stran, ki bo ustvarjena. $1",
+	"autocreatepage-error-missing-hook-parameter": "Klic vstavka z manjkajočimi parametri.",
+	"autocreatepage-error-recursion-level-exceeded": "Napaka: Presežena raven rekurzije za samodejno ustvarjene strani.",
+	"autocreatepage-revision-comment": "Samodejna ustvaritev strani s funkcijo razčlenjevalnika na strani [[$1]]"
 }
