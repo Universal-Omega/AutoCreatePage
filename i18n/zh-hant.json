@@ -4,5 +4,10 @@
 			"Kly"
 		]
 	},
-	"autocreatepage-desc": "提供解析函數來在保存頁面時建立帶有預設內容的額外 wiki 頁面。"
+	"autocreatepage-desc": "提供解析函式來在保存頁面時建立帶有預設內容的額外 wiki 頁面。",
+	"autocreatepage-error-empty-content": "錯誤：需提供頁面內容才能建立頁面。",
+	"autocreatepage-error-empty-title": "錯誤：必須為此函式指定有效的標題文字才能建立頁面。$1",
+	"autocreatepage-error-missing-hook-parameter": "調用掛勾時缺少參數。",
+	"autocreatepage-error-recursion-level-exceeded": "錯誤：超出自動建立頁面的遞迴層級。",
+	"autocreatepage-revision-comment": "由頁面[[$1]]上的解析函式自動建立的頁面"
 }
