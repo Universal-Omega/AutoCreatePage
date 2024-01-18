@@ -4,5 +4,10 @@
 			"Jon Harald Søby"
 		]
 	},
-	"autocreatepage-desc": "Tilbyr en parserfunksjon for å opprette wikisider med standardinnhold når man lagrer en side."
+	"autocreatepage-desc": "Tilbyr en parserfunksjon for å opprette wikisider med standardinnhold når man lagrer en side.",
+	"autocreatepage-error-empty-content": "Feil: Sideinnhold må angis for at ei side skal opprettes.",
+	"autocreatepage-error-empty-title": "Feil: For at ei side skal opprettes må funksjonen få en gyldig tittel. $1",
+	"autocreatepage-error-missing-hook-parameter": "Hook påkalt med manglende parametere.",
+	"autocreatepage-error-recursion-level-exceeded": "Feil: Rekursjonsnivå for autoopprettede sider overskredet.",
+	"autocreatepage-revision-comment": "Side opprettet automatisk med parserfunksjon på siden [[$1]]"
 }
