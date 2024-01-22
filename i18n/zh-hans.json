@@ -1,8 +1,14 @@
 {
 	"@metadata": {
 		"authors": [
+			"Anterdc99",
 			"Lakejason0"
 		]
 	},
-	"autocreatepage-desc": "提供解析器函数以在保存页面时使用默认内容创建其他wiki页面。"
+	"autocreatepage-desc": "提供解析器函数以在保存页面时使用默认内容创建其他wiki页面。",
+	"autocreatepage-error-empty-content": "错误：需要提供页面内容才能创建页面。",
+	"autocreatepage-error-empty-title": "错误：必须为此函数指定有效的标题文本才能创建页面。$1",
+	"autocreatepage-error-missing-hook-parameter": "调用钩子时缺少参数。",
+	"autocreatepage-error-recursion-level-exceeded": "错误：超出自动创建页面的递归层级。",
+	"autocreatepage-revision-comment": "由页面[[$1]]上的解析器函数自动创建的页面"
 }
