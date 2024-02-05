@@ -4,5 +4,10 @@
 			"Hamilton Abreu"
 		]
 	},
-	"autocreatepage-desc": "Fornece uma função do analisador sintático para criar páginas wiki adicionais com conteúdo padrão ao gravar uma página."
+	"autocreatepage-desc": "Fornece uma função do analisador sintático para criar páginas wiki adicionais com conteúdo padrão ao gravar uma página.",
+	"autocreatepage-error-empty-content": "Erro: para que uma página seja criada, o conteúdo da mesma tem de ser fornecido.",
+	"autocreatepage-error-empty-title": "Erro: esta função tem de receber um texto válido de título para a página ser criada. $1",
+	"autocreatepage-error-missing-hook-parameter": "''Hook'' invocado com parâmetros em falta.",
+	"autocreatepage-error-recursion-level-exceeded": "Erro: o nível de recursão para páginas criadas automaticamente foi excedido.",
+	"autocreatepage-revision-comment": "Página criada automaticamente por uma função do analisador sintático na página [[$1]]"
 }
