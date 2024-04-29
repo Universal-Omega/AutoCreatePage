@@ -1,8 +1,14 @@
 {
 	"@metadata": {
 		"authors": [
-			"Justman10000"
+			"Justman10000",
+			"TomatoCake"
 		]
 	},
-	"autocreatepage-desc": "Bietet eine Parserfunktion, um beim Speichern einer Seite zusätzliche Wikiseiten mit Standardinhalten zu erstellen."
+	"autocreatepage-desc": "Bietet eine Parserfunktion, um beim Speichern einer Seite zusätzliche Wikiseiten mit Standardinhalten zu erstellen.",
+	"autocreatepage-error-empty-content": "Fehler: Damit eine Seite erstellt werden kann, muss der Seiteninhalt angegeben werden.",
+	"autocreatepage-error-empty-title": "Fehler: Dieser Funktion muss ein gültiger Titel für die zu erstellende Seite übergeben werden. $1",
+	"autocreatepage-error-missing-hook-parameter": "Hook mit fehlenden Parametern aufgerufen.",
+	"autocreatepage-error-recursion-level-exceeded": "Fehler: Rekursionsebene für automatisch erstellte Seiten überschritten.",
+	"autocreatepage-revision-comment": "Seite automatisch erstellt durch Parserfunktion auf Seite [[$1]]"
 }
