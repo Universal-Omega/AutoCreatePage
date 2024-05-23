@@ -1,0 +1,9 @@
+{
+	"@metadata": {
+		"authors": [
+			"Suleiman the Magnificent Television"
+		]
+	},
+	"autocreatepage-desc": "페이지를 저장할 때 기본 콘텐츠를 가진 추가 위키 페이지를 생성하는 파서 기능을 제공합니다.",
+	"autocreatepage-error-empty-content": "오류: 페이지가 생성되기 위해서는 페이지 내용이 제공되어야 합니다."
+}
