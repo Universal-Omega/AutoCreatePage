@@ -1,0 +1,13 @@
+{
+	"@metadata": {
+		"authors": [
+			"McDutchie"
+		]
+	},
+	"autocreatepage-desc": "Biedt een parserfunctie om bij het opslaan van een pagina extra wikipagina’s met standaardinhoud aan te maken.",
+	"autocreatepage-error-empty-content": "Fout: Om een pagina aan te kunnen maken moet de pagina-inhoud worden opgegeven.",
+	"autocreatepage-error-empty-title": "Fout: aan deze functie moet een geldige titeltekst worden doorgegeven om de pagina aan te kunnen maken. $1",
+	"autocreatepage-error-missing-hook-parameter": "Hook aangeroepen met ontbrekende parameters.",
+	"autocreatepage-error-recursion-level-exceeded": "Fout: het maximale recursieniveau voor automatisch aangemaakte pagina’s is overschreden.",
+	"autocreatepage-revision-comment": "Pagina automatisch aangemaakt door de parserfunctie op de pagina [[$1]]"
+}
