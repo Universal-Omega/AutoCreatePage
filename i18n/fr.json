@@ -1,11 +1,15 @@
 {
 	"@metadata": {
 		"authors": [
+			"Mahabarata",
 			"SleaY",
 			"Verdy p"
 		]
 	},
 	"autocreatepage-desc": "Fournit une fonction d’analyseur pour créer des pages wiki supplémentaires avec un contenu par défaut lors de l’enregistrement d’une page.",
 	"autocreatepage-error-empty-content": "Erreur : Pour qu'une page soit créée, le contenu de la page doit être fourni.",
-	"autocreatepage-error-empty-title": "Erreur : cette fonction doit recevoir un texte de titre valide pour que la page soit créée. $1"
+	"autocreatepage-error-empty-title": "Erreur : cette fonction doit recevoir un texte de titre valide pour que la page soit créée. $1",
+	"autocreatepage-error-missing-hook-parameter": "L'accroche est invoquée avec des paramètres manquants.",
+	"autocreatepage-error-recursion-level-exceeded": "Erreur : niveau de récursivité dépassé pour les pages créées automatiquement.",
+	"autocreatepage-revision-comment": "Page créée automatiquement par la fonction d'analyse sur la page [[$1]]"
 }
