@@ -4,5 +4,10 @@
 			"Toliño"
 		]
 	},
-	"autocreatepage-desc": "Ofrece unha función analizadora para crear páxinas wiki adicionais con contido predeterminado ao gardar unha páxina."
+	"autocreatepage-desc": "Ofrece unha función analizadora para crear páxinas wiki adicionais con contido predeterminado ao gardar unha páxina.",
+	"autocreatepage-error-empty-content": "Erro: Para crear unha páxina, debe proporcionarse o contido da páxina.",
+	"autocreatepage-error-empty-title": "Erro: Esta función debe recibir un título válido para que a páxina se cree. $1",
+	"autocreatepage-error-missing-hook-parameter": "Invocouse o gancho sen algúns parámetros.",
+	"autocreatepage-error-recursion-level-exceeded": "Erro: Superouse o nivel de recursión das páxinas creadas automaticamente.",
+	"autocreatepage-revision-comment": "Páxina creada automaticamente pola función analizadora na páxina \"[[$1]]\""
 }
