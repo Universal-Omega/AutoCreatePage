@@ -5,5 +5,10 @@
 			"Meno25"
 		]
 	},
-	"autocreatepage-desc": "يوفر وظيفة المحلل اللغوي لإنشاء صفحات wiki إضافية ذات محتوى افتراضي عند حفظ الصفحة."
+	"autocreatepage-desc": "يوفر وظيفة المحلل اللغوي لإنشاء صفحات wiki إضافية ذات محتوى افتراضي عند حفظ الصفحة.",
+	"autocreatepage-error-empty-content": "خطأ: لإنشاء صفحة، يجب توفير محتوى الصفحة.",
+	"autocreatepage-error-empty-title": "خطأ: يجب إعطاء هذه الوظيفة نص عنوان صالح حتى يتم إنشاء الصفحة. $1",
+	"autocreatepage-error-missing-hook-parameter": "تم استدعاء الخطاف مع المعلمات المفقودة.",
+	"autocreatepage-error-recursion-level-exceeded": "خطأ: تم تجاوز مستوى التكرار للصفحات التي تم إنشاؤها تلقائيًا.",
+	"autocreatepage-revision-comment": "تم إنشاء الصفحة تلقائيًا بواسطة وظيفة المحلل على الصفحة [[$1]]"
 }
