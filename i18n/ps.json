@@ -1,0 +1,13 @@
+{
+	"@metadata": {
+		"authors": [
+			"شاه زمان پټان"
+		]
+	},
+	"autocreatepage-desc": "د مخ خوندي کولو پرمهال د تلواله منځپانگې سره د زياتي ويکي مخونو د جوړولو لپاره تجزيه‌گره چاره چمتو کوي.",
+	"autocreatepage-error-empty-content": "تېروتنه: د يو مخ جوړولو لپاره د مخ منځپانگه بايد چمتو شي.",
+	"autocreatepage-error-empty-title": "تېروتنه: د مخ جوړولو لپاره بايد دې چارې ته يو باوری سرليک ورکړل شي. $1",
+	"autocreatepage-error-missing-hook-parameter": "يو چنگک له ورک شوي پاراميترونو سره وغوښتل شو.",
+	"autocreatepage-error-recursion-level-exceeded": "تېروتنه: د خپلکاره جوړو شويو مخونو د تکرار کچه زياته شوه.",
+	"autocreatepage-revision-comment": "مخ په خپلکاري ډول په [[$1]] مخ کې د تجزيه‌گرې چارې له خوا جوړ شو"
+}
