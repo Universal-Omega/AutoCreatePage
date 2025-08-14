@@ -1,0 +1,13 @@
+{
+	"@metadata": {
+		"authors": [
+			"Умар"
+		]
+	},
+	"autocreatepage-desc": "Парсеран функци ло, агӀо Ӏалашйеш хилча, стандартан чулацамца кхин а вики агӀонаш кхолла.",
+	"autocreatepage-error-empty-content": "ГӀалат: АгӀо кхолла, агӀонан чулацам дӀабала беза.",
+	"autocreatepage-error-empty-title": "ГӀалат: оцу функцина нийса цӀеран текст йан йеза кхолла йезаш йолчу агӀонна. $1",
+	"autocreatepage-error-missing-hook-parameter": "«Hook» кхайкхина параметраш йоцуш.",
+	"autocreatepage-error-recursion-level-exceeded": "ГӀалат: авто кхоьллинчу агӀонашна рекурсин тӀегӀа совйаьлла.",
+	"autocreatepage-revision-comment": "АгӀо авто кхоьллина парсеран функцица [[$1]] агӀонан тӀехь"
+}
