@@ -1,0 +1,13 @@
+{
+	"@metadata": {
+		"authors": [
+			"Shulmj"
+		]
+	},
+	"autocreatepage-desc": "ページを保存するときに、追加で既定の内容を持つウィキページを作成するためのパーサー機能を提供します。",
+	"autocreatepage-error-empty-content": "エラー: ページを作成するには、ページの内容を指定する必要があります。",
+	"autocreatepage-error-empty-title": "エラー: この関数には、作成するページの有効なタイトルを指定する必要があります。 $1",
+	"autocreatepage-error-missing-hook-parameter": "パラメータが不足した状態でフックが呼び出されました。",
+	"autocreatepage-error-recursion-level-exceeded": "エラー: 自動作成されたページの再帰レベルが超過しました。",
+	"autocreatepage-revision-comment": "ページ [[$1]] のパーサー関数によって自動的に作成されたページ"
+}
