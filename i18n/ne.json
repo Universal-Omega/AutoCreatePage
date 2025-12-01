@@ -1,0 +1,11 @@
+{
+	"@metadata": {
+		"authors": [
+			"बडा काजी"
+		]
+	},
+	"autocreatepage-error-empty-content": "त्रुटिः पृष्ठ सिर्जना गर्नाका लागि, पृष्ठ सामग्री प्रदान गर्नै पर्छ।",
+	"autocreatepage-error-empty-title": "त्रुटि: पृष्ठ सिर्जना गर्नको लागि यो प्रकार्यलाई मान्य शीर्षक पाठ दिनुपर्छ। $1",
+	"autocreatepage-error-recursion-level-exceeded": "त्रुटिः स्वतः-निर्मित पृष्ठहरूका लागि पुनरावृत्ति स्तर नाघेको छ।",
+	"autocreatepage-revision-comment": "पृष्ठ [[$1]]मा पार्सर प्रकार्यद्वारा स्वचालित रूपमा सिर्जना गरिएको पृष्ठ।"
+}
