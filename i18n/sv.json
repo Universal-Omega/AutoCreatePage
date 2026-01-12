@@ -1,8 +1,14 @@
 {
 	"@metadata": {
 		"authors": [
-			"Sabelöga"
+			"Sabelöga",
+			"Stefan2255"
 		]
 	},
-	"autocreatepage-desc": "Tillhandahåller en parser-funktion för att skapa ytterligare wikisidor med standardinnehåll för man para en sida."
+	"autocreatepage-desc": "Tillhandahåller en parser-funktion för att skapa ytterligare wikisidor med standardinnehåll för man para en sida.",
+	"autocreatepage-error-empty-content": "Fel: För att en sida ska kunna skapas måste sidinnehållet anges.",
+	"autocreatepage-error-empty-title": "Fel: den här funktionen måste ges en giltig titeltext för att sidan ska kunna skapas. $1",
+	"autocreatepage-error-missing-hook-parameter": "Haknen (hook) anropades med saknade parametrar.",
+	"autocreatepage-error-recursion-level-exceeded": "Fel: Rekursionsnivån för automatiskt skapade sidor har överskridits.",
+	"autocreatepage-revision-comment": "Sidan skapades automatiskt av parserfunktionen på sidan [[$1]]"
 }
