@@ -1,8 +1,9 @@
 {
 	"@metadata": {
 		"authors": [
+			"Aca",
 			"Winston Sung"
 		]
 	},
-	"autocreatepage-desc": "Pruža funkciju parsera za stvaranje dodatnih vikistranica sa zadanim sadržajem prilikom čuvanja stranice."
+	"autocreatepage-desc": "Pruža funkciju parsera za stvaranje dodatnih wiki stranica sa zadanim sadržajem pri čuvanju stranice."
 }
