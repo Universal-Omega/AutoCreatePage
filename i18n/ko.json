@@ -7,6 +7,8 @@
 	},
 	"autocreatepage-desc": "페이지를 저장할 때 기본 콘텐츠를 가진 추가 위키 페이지를 생성하는 파서 기능을 제공합니다.",
 	"autocreatepage-error-empty-content": "오류: 페이지가 생성되기 위해서는 페이지 내용이 제공되어야 합니다.",
+	"autocreatepage-error-empty-title": "오류: 문서가 생성되려면 이 함수에 유효한 제목 텍스트가 제공되어야 합니다. $1",
+	"autocreatepage-error-missing-hook-parameter": "매개변수가 누락된 상태로 훅이 호출되었습니다.",
 	"autocreatepage-error-recursion-level-exceeded": "오류: 자동 생성된 문서의 재귀 수준이 초과되었습니다.",
 	"autocreatepage-revision-comment": "[[$1]] 문서에서 파서 함수에 의해 자동으로 생성된 문서"
 }
