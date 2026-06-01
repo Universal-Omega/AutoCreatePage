@@ -1,8 +1,14 @@
 {
 	"@metadata": {
 		"authors": [
+			"HakanIST",
 			"Hedda"
 		]
 	},
-	"autocreatepage-desc": "Bir sayfayı kaydederken varsayılan içeriğe sahip ek wiki sayfaları oluşturmak için bir ayrıştırıcı işlevi sağlar."
+	"autocreatepage-desc": "Bir sayfayı kaydederken varsayılan içeriğe sahip ek wiki sayfaları oluşturmak için bir ayrıştırıcı işlevi sağlar.",
+	"autocreatepage-error-empty-content": "Hata: Bir sayfa oluşturulabilmesi için sayfa içeriği sağlanmalıdır.",
+	"autocreatepage-error-empty-title": "Hata: Bu işleve oluşturulacak sayfa için geçerli bir başlık metni verilmelidir. $1",
+	"autocreatepage-error-missing-hook-parameter": "Hook eksik parametrelerle çağrıldı.",
+	"autocreatepage-error-recursion-level-exceeded": "Hata: Otomatik oluşturulan sayfalar için özyineleme düzeyi aşıldı.",
+	"autocreatepage-revision-comment": "Sayfa, [[$1]] sayfasındaki ayrıştırıcı işlevi tarafından otomatik olarak oluşturuldu"
 }
