@@ -4,5 +4,10 @@
 			"Eduardoaddad"
 		]
 	},
-	"autocreatepage-desc": "Fornece uma função do analisador sintático para criar páginas wiki adicionais com conteúdo padrão ao salvar uma página."
+	"autocreatepage-desc": "Fornece uma função do analisador sintático para criar páginas wiki adicionais com conteúdo padrão ao salvar uma página.",
+	"autocreatepage-error-empty-content": "Erro: Para que uma página seja criada, é necessário fornecer o conteúdo da página.",
+	"autocreatepage-error-empty-title": "Erro: é necessário fornecer um título válido para esta função para que a página seja criada. $1",
+	"autocreatepage-error-missing-hook-parameter": "Hook invocado com parâmetros em falta.",
+	"autocreatepage-error-recursion-level-exceeded": "Erro: o nível de recursão para páginas criadas automaticamente foi excedido.",
+	"autocreatepage-revision-comment": "Página criada automaticamente por uma função do analisador sintático na página [[$1]]"
 }
