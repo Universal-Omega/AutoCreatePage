@@ -1,0 +1,13 @@
+{
+	"@metadata": {
+		"authors": [
+			"Bachounda"
+		]
+	},
+	"autocreatepage-desc": "يوفر دالة محلل باش يخلق صفحات ويكي إضافية بمحتوى افتراضي عند حفظ الصفحة.",
+	"autocreatepage-error-empty-content": "غلطة: باش تتخلق صفحة، لازم المحتوى تاعها يتقدم.",
+	"autocreatepage-error-empty-title": "غلطة: هاد الدالة خاصها تتلقى نص عنوان صحيح للصفحة اللي تتخلق. $1",
+	"autocreatepage-error-missing-hook-parameter": "الخطاف تسجل ببارامترات ناقصة.",
+	"autocreatepage-error-recursion-level-exceeded": "غلطة: مستوى التكرار للصفحات المتخلقة تلقائياً تعدى الحد.",
+	"autocreatepage-revision-comment": "الصفحة تخلقات تلقائياً بواسطة دالة المحلل في الصفحة [[$1]]"
+}
