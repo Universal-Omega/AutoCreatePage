@@ -1,0 +1,13 @@
+{
+	"@metadata": {
+		"authors": [
+			"Wizzard"
+		]
+	},
+	"autocreatepage-desc": "Poskytuje funkciu syntaktického analyzátora na vytváranie ďalších wiki stránok s predvoleným obsahom pri ukladaní stránky.",
+	"autocreatepage-error-empty-content": "Chyba: Aby bolo možné stránku vytvoriť, musí byť zadaný jej obsah.",
+	"autocreatepage-error-empty-title": "Chyba: tejto funkcii musí byť zadaný platný text názvu stránky, ktorá sa má vytvoriť. $1",
+	"autocreatepage-error-missing-hook-parameter": "Hook bol vyvolaný s chýbajúcimi parametrami.",
+	"autocreatepage-error-recursion-level-exceeded": "Chyba: Prekročená úroveň rekurzie pre automaticky vytvárané stránky.",
+	"autocreatepage-revision-comment": "Stránka bola automaticky vytvorená funkciou syntaktického analyzátora na stránke [[$1]]"
+}
